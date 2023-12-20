@@ -1,4 +1,7 @@
 import utils from "../utils.js";
+import {promises as fsPromise} from "fs";
+import fs from "fs";
+import path from "path";
 
 class ProductController {
 
@@ -7,6 +10,69 @@ class ProductController {
         const dir = await utils.readDirectory();
             console.log('dir', dir)
             res.json({dir});
+        } catch (e) {
+            res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        }
+    }
+
+    async create(req, res) {
+        const chapter = req.body.chapter;
+        const theme = req.body.theme;
+        const newlesson = req.body.newlesson;
+        try {
+            const folderPath = 'C:\\project\\programming\\main\\files\\' + chapter + '\\';
+
+            const folders = await fsPromise.readdir(folderPath);
+            const arrFolder = [];
+
+            for (const folder of folders) {
+                const folderFullPath = path.join(folderPath, folder);
+                const folderStats = await fsPromise.stat(folderFullPath);
+
+                if (folderStats.isDirectory()) {
+                    arrFolder.push(folder)
+                }
+
+            }
+
+            const newfolder = folderPath + String(Math.max(...arrFolder) + 1);
+
+            if (theme && newlesson) {
+                if (chapter) {
+                    if (!fs.existsSync(newfolder)) {
+                        fs.mkdirSync(newfolder);
+                        console.log('Папка создана успешно.');
+                    } else {
+                        console.log('Папка уже существует.');
+                    }
+                }
+
+                if (chapter) {
+                    if (!fs.existsSync(newfolder + '\\' + 'src')) {
+                        fs.mkdirSync(newfolder + '\\' + 'src');
+                        console.log('Папка создана успешно.');
+                    } else {
+                        console.log('Папка уже существует.');
+                    }
+                }
+                const filePath = path.join(newfolder, 'description.ts');
+                const fileContent = `const theme = '${theme}';\nconst name = '${newlesson}';`
+
+                fs.writeFile(filePath, fileContent, (err) => {
+                    if (err) {
+                        console.error('Ошибка при создании файла:', err);
+                    } else {
+                        console.log('Файл успешно создан.');
+                    }
+                });
+
+                const srcDir = `C:\\project\\programming\\${chapter}\\src`;
+
+                (async function main() {
+                    await utils.copyFolderRecursiveSync(srcDir, newfolder);
+                })()
+            }
+            res.json('create');
         } catch (e) {
             res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
         }

@@ -38,6 +38,24 @@ function App() {
         }
     }
 
+    const createHundler = async () => {
+        const chapter = document.querySelector('#chapter').value;
+        const theme = document.querySelector('#theme').value;
+        const newlesson = document.querySelector('#newlesson').value;
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({chapter, theme, newlesson})
+        };
+
+        let response;
+
+        response = await fetch('http://localhost:5001/api/v1/create', options);
+    }
+
     const chooseLesson = (name) => {
         document.querySelector('#lesson').value = name;
     }
@@ -85,6 +103,13 @@ function App() {
         <input type="text" name="lesson" id="lesson" /><br />
 
         <button onClick={choiceHandler}>Выбрать</button>
+
+        <div>
+            <label>Создать новый</label><br />
+            тема <input type="text" name="theme" id="theme" /><br />
+            название <input type="text" name="newlesson" id="newlesson" /><br />
+            <button onClick={createHundler}>Создать</button>
+        </div>
         {
             lessonsChapter?.subfolders && lessonsChapter?.subfolders.map((lesson, i) => (
                 <>
