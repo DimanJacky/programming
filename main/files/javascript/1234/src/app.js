@@ -1,1 +1,1 @@
-Map and Set
+console.log('Map и Set')
