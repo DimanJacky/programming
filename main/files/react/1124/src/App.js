@@ -3,7 +3,7 @@ import './App.css';
 function App() {
   return (
     <div>
-        DOM element
+      хуки 2
     </div>
   );
 }

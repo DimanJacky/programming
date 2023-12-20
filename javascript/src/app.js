@@ -1,1 +1,1 @@
-console.log('Map и Set')
+console.log('Map и Set типы данных')

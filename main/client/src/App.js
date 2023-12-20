@@ -4,12 +4,29 @@ import {useEffect, useRef, useState} from "react";
 function App() {
     const [chapterArray, setChapterArray] = useState([]);
     const [lessonsChapter, setLessonsChapter] = useState({});
+    const [groupedLessons, setGroupedLessons] = useState({});
+    console.log(groupedLessons)
 
     const isMounted = useRef(true); // Используем useRef для отслеживания момента размонтирования компонента
 
     const selectHandler = (event) => {
         const selectChapterData = chapterArray.find((chapter) => chapter?.name === event.target.value);
         setLessonsChapter(selectChapterData);
+        const groupedData = {};
+        selectChapterData.subfolders.forEach(item => {
+            const theme = item.theme;
+
+            if (!groupedData[theme]) {
+                groupedData[theme] = [];
+            }
+
+            groupedData[theme].push(item);
+        });
+        const resultArray = Object.keys(groupedData).map(theme => ({
+            theme: theme,
+            data: groupedData[theme]
+        }));
+        setGroupedLessons(resultArray);
     }
 
     const choiceHandler = async () => {
@@ -111,14 +128,19 @@ function App() {
             <button onClick={createHundler}>Создать</button>
         </div>
         {
-            lessonsChapter?.subfolders && lessonsChapter?.subfolders.map((lesson, i) => (
+            groupedLessons.length > 0 && groupedLessons?.map((lessons, i) => (
                 <>
                     <h3>
-                        {lesson.theme}
+                        {lessons.theme}
                     </h3>
-                    <div key={i} onClick={() => chooseLesson(lesson.folderName)}>
-                        {lesson.name}
-                    </div>
+                    {
+                        lessons.data.map(item => {
+                            return (<div key={i} onClick={() => chooseLesson(item.folderName)}>
+                                {item.name}
+                            </div>)
+                        })
+                    }
+
                 </>
             ))
         }
