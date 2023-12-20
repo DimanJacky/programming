@@ -4,14 +4,10 @@ import {useEffect, useRef, useState} from "react";
 function App() {
     const [chapterArray, setChapterArray] = useState([]);
     const [lessonsChapter, setLessonsChapter] = useState({});
-    console.log('lessonsChapter', lessonsChapter)
 
     const isMounted = useRef(true); // Используем useRef для отслеживания момента размонтирования компонента
 
-    console.log('chapterArray', chapterArray)
-
     const selectHandler = (event) => {
-        console.log('event.target.value', event.target.value)
         const selectChapterData = chapterArray.find((chapter) => chapter?.name === event.target.value);
         setLessonsChapter(selectChapterData);
     }
@@ -20,9 +16,7 @@ function App() {
         try {
             try {
                 const chapter = document.querySelector('#chapter').value;
-                console.log('chapter', chapter)
                 const lesson = document.querySelector('#lesson').value;
-                console.log('lesson', lesson)
 
                 const options = {
                     method: 'POST',
@@ -34,15 +28,8 @@ function App() {
 
                 let response;
 
-                console.log('isMounted.current', isMounted.current)
-
-                // if (!isMounted.current) {
-                //     return; // Если компонент размонтирован, не обновляем состояние
-                // } else {
                     response = await fetch('http://localhost:5001/api/v1/pp-delivery/issuance-np-card-in-tp/start', options);
-                // }
 
-                const data = await response.json();
             } catch (error) {
                 console.error("Error fetching data:", error);
             }
