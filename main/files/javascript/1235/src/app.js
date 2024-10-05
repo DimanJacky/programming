@@ -1,1 +1,0 @@
-console.log('Map и Set работа с данными')
