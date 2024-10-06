@@ -1,9 +1,12 @@
 import './App.css';
+import {useState} from "react";
 
 function App() {
+    console.log('answer')
+
   return (
     <div>
-      хуки 1
+
     </div>
   );
 }

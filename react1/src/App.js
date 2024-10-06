@@ -1,12 +1,10 @@
 import './App.css';
-import {useState} from "react";
 
 function App() {
-    console.log('answer')
-
   return (
     <div>
-
+        <h1>Хуки</h1>
+        <p>useLayoutEffectцуукцукцукцукц</p>
     </div>
   );
 }
