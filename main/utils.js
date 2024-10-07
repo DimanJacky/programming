@@ -102,6 +102,7 @@ function deleteDirectory(dir) {
                 const data = {
                     name: folder,
                     subfolders: [],
+                    id: folder,
                 };
 
                 const descriptionFilePath = path.join(folderFullPath, 'description.ts');
@@ -140,7 +141,8 @@ async function readSubdirectories(folderPath) {
         const data = {
             name: subfolder,
             theme: subfolder,
-            folderName: subfolder
+            folderName: subfolder,
+            id: subfolder
         };
 
         if (subfolderStats.isDirectory()) {

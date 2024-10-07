@@ -5,7 +5,6 @@ function App() {
     const [chapterArray, setChapterArray] = useState([]);
     const [lessonsChapter, setLessonsChapter] = useState({});
     const [groupedLessons, setGroupedLessons] = useState({});
-    console.log(groupedLessons)
 
     const isMounted = useRef(true); // Используем useRef для отслеживания момента размонтирования компонента
 
@@ -112,9 +111,9 @@ function App() {
         <h1>Auth Page</h1>
         <label>Раздел</label><br />
         <select name="chapter" id="chapter" onChange={selectHandler}>
-            <option value="Выберите раздел">Выберите раздел</option>
+            <option key={0} value="Выберите раздел">Выберите раздел</option>
             {
-                chapterArray?.length > 0 && chapterArray.map((lesson, i) => (<option value={lesson.name} key={i}>{lesson.name}</option>))
+                chapterArray?.length > 0 && chapterArray.map((lesson, i) => (<option value={lesson.name} key={lesson.id}>{lesson.name}</option>))
             }
         </select><br />
         <input type="text" name="lesson" id="lesson" /><br />
@@ -128,21 +127,23 @@ function App() {
             <button onClick={createHundler}>Создать</button>
         </div>
         {
-            groupedLessons.length > 0 && groupedLessons?.map((lessons, i) => (
-                <>
-                    <h3>
-                        {lessons.theme}
-                    </h3>
-                    {
-                        lessons.data.map(item => {
-                            return (<div key={i} onClick={() => chooseLesson(item.folderName)}>
-                                {item.name}
-                            </div>)
-                        })
-                    }
+            groupedLessons.length > 0 && groupedLessons?.map((lessons, i) => {
+                return (
+                    <div key={i}>
+                        <h3>
+                            {lessons.theme}
+                        </h3>
+                        {
+                            lessons.data.map(item => {
+                                return (<div key={item.id} onClick={() => chooseLesson(item.folderName)}>
+                                    {item.name}
+                                </div>)
+                            })
+                        }
 
-                </>
-            ))
+                    </div>
+                )
+            })
         }
     </div>
   );
