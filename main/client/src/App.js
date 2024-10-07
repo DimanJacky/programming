@@ -55,9 +55,9 @@ function App() {
     }
 
     const createHundler = async () => {
-        const chapter = document.querySelector('#chapter').value;
-        const theme = document.querySelector('#theme').value;
-        const newlesson = document.querySelector('#newlesson').value;
+        const chapter = document.querySelector('#chapter').value.trim();
+        const theme = document.querySelector('#theme').value.trim();
+        const newlesson = document.querySelector('#newlesson').value.trim();
 
         const options = {
             method: 'POST',
