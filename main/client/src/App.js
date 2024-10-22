@@ -5,6 +5,19 @@ function App() {
     const [chapterArray, setChapterArray] = useState([]);
     const [lessonsChapter, setLessonsChapter] = useState({});
     const [groupedLessons, setGroupedLessons] = useState({});
+    const [choiseDisable, setChoiseDisable] = useState(true);
+    const [newLessonDisable, setNewLessonDisable] = useState(true);
+
+    const [themeText, setThemeText] = useState('');
+    const [newlessonText, setNewlessonText] = useState('');
+
+    const onChangeThemeText = (newThemeText) => {
+        setThemeText(newThemeText.target.value);
+    }
+
+    const onChangeNewlessonText = (newlessonText) => {
+        setNewlessonText(newlessonText.target.value);
+    }
 
     const isMounted = useRef(true); // Используем useRef для отслеживания момента размонтирования компонента
 
@@ -72,8 +85,28 @@ function App() {
         response = await fetch('http://localhost:5001/api/v1/create', options);
     }
 
+    const editHundler = async () => {
+        const chapter = document.querySelector('#chapter').value.trim();
+        const theme = document.querySelector('#theme').value.trim();
+        const newlesson = document.querySelector('#newlesson').value.trim();
+        const folderLesson = document.querySelector('#lesson').value.trim();
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({chapter, theme, newlesson, folderLesson})
+        };
+
+        let response;
+
+        response = await fetch('http://localhost:5001/api/v1/edit', options);
+    }
+
     const chooseLesson = (name) => {
         document.querySelector('#lesson').value = name;
+        setChoiseDisable(false);
     }
 
     useEffect(() => {
@@ -118,13 +151,15 @@ function App() {
         </select><br />
         <input type="text" name="lesson" id="lesson" /><br />
 
-        <button onClick={choiceHandler}>Выбрать</button>
+        <button disabled={choiseDisable} onClick={choiceHandler}>Выбрать</button>
 
         <div>
             <label>Создать новый</label><br />
-            тема <input type="text" name="theme" id="theme" /><br />
-            название <input type="text" name="newlesson" id="newlesson" /><br />
-            <button onClick={createHundler}>Создать</button>
+            тема <input type="text" name="theme" id="theme" value={themeText} onInput={onChangeThemeText}/><br />
+            название <input type="text" name="newlesson" id="newlesson" value={newlessonText}
+                            onInput={onChangeNewlessonText}/><br />
+            <button disabled={!newlessonText || !themeText} onClick={createHundler}>Создать</button><br />
+            <button disabled={choiseDisable} onClick={editHundler}>Редактировать</button>
         </div>
         {
             groupedLessons.length > 0 && groupedLessons?.map((lessons, i) => {
@@ -135,7 +170,7 @@ function App() {
                         </h3>
                         {
                             lessons.data.map(item => {
-                                return (<div key={item.id} onClick={() => chooseLesson(item.folderName)}>
+                                return (<div className="lesson" key={item.id} onClick={() => chooseLesson(item.folderName)}>
                                     {item.name}
                                 </div>)
                             })

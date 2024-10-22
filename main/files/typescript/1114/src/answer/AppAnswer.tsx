@@ -11,8 +11,8 @@ export const AppAnswer = () => {
 
     return (
         <div>
-            <h1>javascript</h1>
-            <h1>Переменные</h1>
+            <h1>typescript</h1>
+            <h3>Переменные</h3>
             <p>Работа с переменными</p>
         </div>
     );

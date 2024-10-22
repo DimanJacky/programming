@@ -6,5 +6,6 @@ const router = new Router()
 router.post('/v1/pp-delivery/issuance-np-card-in-tp/start', ProductController.nonPersoCardTpStart)
 router.post('/v1/start', ProductController.start)
 router.post('/v1/create', ProductController.create)
+router.post('/v1/edit', ProductController.edit)
 
 export default router;

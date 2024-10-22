@@ -8,7 +8,6 @@ class ProductController {
     async start(req, res) {
         try {
         const dir = await utils.readDirectory();
-            console.log('dir', dir)
             res.json({dir});
         } catch (e) {
             res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
@@ -78,13 +77,60 @@ class ProductController {
         }
     }
 
+    async edit(req, res) {
+        const chapter = req.body.chapter;
+        const theme = req.body.theme;
+        const newlesson = req.body.newlesson;
+        const folderLesson = req.body.folderLesson;
+        try {
+            const folderPath = 'C:\\project\\programming\\main\\files\\' + chapter + '\\';
+
+            const newfolder = folderPath + folderLesson;
+
+            console.log('newfolderedit', newfolder);
+
+            if (theme && newlesson) {
+                console.log('theme && newlesson');
+                if (chapter) {
+                    if (!fs.existsSync(newfolder + '\\' + 'src')) {
+                        fs.mkdirSync(newfolder + '\\' + 'src');
+                        console.log('Папка создана успешно.');
+                    } else {
+                        console.log('Папка уже существует.');
+                    }
+                }
+                const filePath = path.join(newfolder, 'description.ts');
+                const fileContent = `const theme = '${theme}';\nconst name = '${newlesson}';`
+
+                console.log('writeFile')
+
+                fs.writeFile(filePath, fileContent, (err) => {
+                    if (err) {
+                        console.error('Ошибка при создании файла:', err);
+                    } else {
+                        console.log('Файл успешно создан.');
+                    }
+                });
+
+                console.log('after write');
+
+                const srcDir = `C:\\project\\programming\\${chapter}\\src`;
+
+                (async function main() {
+                    await utils.copyFolderRecursiveSync(srcDir, newfolder);
+                })()
+            }
+            res.json('edit');
+        } catch (e) {
+            res.status(500).json({message: 'Что-то пошло не так, попробуйте снова'})
+        }
+    }
+
     async nonPersoCardTpStart(req, res) {
         try {
 
             const chapter = req.body.chapter; // Название раздела
             const lesson = req.body.lesson; // Название темы
-
-            console.log('req.body', req.body);
 
             const folderFiles = 'C:\\project\\programming\\main\\files\\';
 
@@ -94,8 +140,6 @@ class ProductController {
 
             // Из этой папки копируются файлы
             const srcDir = folderLesson + `${lesson}\\src`;
-
-            console.log('srcDir', srcDir);
 
             // Файлы копируются в эту папку
             const destDir = `C:\\project\\programming\\${chapter}`;

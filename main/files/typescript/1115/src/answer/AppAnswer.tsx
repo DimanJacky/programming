@@ -13,8 +13,8 @@ export const AppAnswer = () => {
 
     return (
         <div>
-            <h1>javascript</h1>
-            <h1>Типы данных</h1>
+            <h1>typescript</h1>
+            <h3>Типы данных</h3>
             <p>Шаблонные строки</p>
         </div>
     );
