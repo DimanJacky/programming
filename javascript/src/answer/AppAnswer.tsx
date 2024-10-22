@@ -1,21 +1,19 @@
 import React from 'react';
 
 export const AppAnswer = () => {
-    // Ответ
+    let admin;
+    let name;
 
-    let name = "Ilya";
+    name = 'Джон';
+    admin = name;
 
-    console.log( `hello ${1}` ); // hello 1
-
-    console.log( `hello ${"name"}` ); // hello name
-
-    console.log( `hello ${name}` ); // hello Ilya
+    alert(admin)
 
     return (
         <div>
             <h1>javascript</h1>
-            <h1>Типы данных</h1>
-            <p>Шаблонные строки</p>
+            <h1>Переменные</h1>
+            <p>Работа с переменными</p>
         </div>
     );
 };

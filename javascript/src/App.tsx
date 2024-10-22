@@ -1,12 +1,17 @@
-import React, { useEffect } from 'react';
-import {Events1} from "@/components/Events1";
-import {Events2} from "@/components/Events2";
+import React from 'react';
 
 export const App = () => {
+    // Задание:
+    // Объявите две переменные: admin и name.
+    // Запишите строку "Джон" в переменную name.
+    // Скопируйте значение из переменной name в admin.
+    // Выведите на экран значение admin, используя функцию alert (должна показать «Джон»).
 
     return (
         <div>
-            <Events1 />
+            <h1>javascript</h1>
+            <h1>Переменные</h1>
+            <p>Работа с переменными</p>
         </div>
     );
 };
