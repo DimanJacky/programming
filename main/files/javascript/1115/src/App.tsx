@@ -1,21 +1,16 @@
 import React from 'react';
 
 export const App = () => {
-    // Задание
-    // Что выведет этот скрипт?
-
-    let name = "Ilya";
-
-    console.log( `hello ${1}` ); // ?
-
-    console.log( `hello ${"name"}` ); // ?
-
-    console.log( `hello ${name}` ); // ?
+    // Задание:
+    // Объявите две переменные: admin и name.
+    // Запишите строку "Джон" в переменную name.
+    // Скопируйте значение из переменной name в admin.
+    // Выведите на экран значение admin, используя функцию alert (должна показать «Джон»).
 
     return (
         <div>
             <h1>javascript</h1>
-            <h1>Типы данных</h1>
+            <h1>Строки</h1>
             <p>Шаблонные строки</p>
         </div>
     );

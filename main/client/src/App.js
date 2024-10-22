@@ -91,6 +91,11 @@ function App() {
         const newlesson = document.querySelector('#newlesson').value.trim();
         const folderLesson = document.querySelector('#lesson').value.trim();
 
+        const edit = window.confirm(`Вы хотите отредактировать в разделе ${chapter} в теме ${theme} урок ${newlesson}?`);
+        if (!edit) {
+            return;
+        }
+
         const options = {
             method: 'POST',
             headers: {

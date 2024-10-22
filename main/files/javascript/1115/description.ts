@@ -1,2 +1,2 @@
-const theme = 'Типы данных';
+const theme = 'Строки';
 const name = 'Шаблонные строки';

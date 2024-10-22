@@ -87,10 +87,7 @@ class ProductController {
 
             const newfolder = folderPath + folderLesson;
 
-            console.log('newfolderedit', newfolder);
-
             if (theme && newlesson) {
-                console.log('theme && newlesson');
                 if (chapter) {
                     if (!fs.existsSync(newfolder + '\\' + 'src')) {
                         fs.mkdirSync(newfolder + '\\' + 'src');
@@ -102,8 +99,6 @@ class ProductController {
                 const filePath = path.join(newfolder, 'description.ts');
                 const fileContent = `const theme = '${theme}';\nconst name = '${newlesson}';`
 
-                console.log('writeFile')
-
                 fs.writeFile(filePath, fileContent, (err) => {
                     if (err) {
                         console.error('Ошибка при создании файла:', err);
@@ -111,8 +106,6 @@ class ProductController {
                         console.log('Файл успешно создан.');
                     }
                 });
-
-                console.log('after write');
 
                 const srcDir = `C:\\project\\programming\\${chapter}\\src`;
 
