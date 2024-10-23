@@ -6,17 +6,13 @@ export const App = () => {
     // Что выведется в консоли?
 
     if (show) {
-        const user = {
-            email: "my@email.com",
-            // @ts-ignore
-            updateEmail: email => {
-                // @ts-ignore
-                this.email = email
-            }
-        }
-
-        user.updateEmail("new@email.com")
-        console.log(user.email)
+        console.log(1);
+        setTimeout(() => console.log(2));
+        Promise.resolve().then(() => console.log(3));
+        Promise.resolve().then(() => setTimeout(() => console.log(4)));
+        Promise.resolve().then(() => console.log(5));
+        setTimeout(() => console.log(6));
+        console.log(7);
     }
 
     const showAnswer = () => setShow(true);
@@ -24,8 +20,8 @@ export const App = () => {
     return (
         <div>
             <h1>javascript</h1>
-            <h1>This</h1>
-            <p>This контекст в методах объекта задача 2</p>
+            <h1>Event loop</h1>
+            <p>Event loop задача 2</p>
             <button onClick={showAnswer}>Показать</button>
         </div>
     );
