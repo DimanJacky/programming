@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="search" />
+<script>
+    // Написать функцию debounce для задержки onChange при вводе в input
+
+    // функция, которая вызывается при вводе в input
+    function onChange(e) {
+        console.log(e.target.value);
+    }
+
+    const debounce = () => {
+
+    }
+
+    const onChangeDebounce = debounce(onChange, 500); // функция оборачивается в debounce
+
+    document.getElementById('search').addEventListener('keyup', onChangeDebounce);
+
+</script>
+</body>
+</html>

@@ -5,28 +5,21 @@ export const App = () => {
     // Задание:
     // Что выведется в консоли?
 
-    if (show) {
-        const user = {
-            email: "my@email.com",
-            // @ts-ignore
-            updateEmail: email => {
-                // @ts-ignore
-                this.email = email
-            }
-        }
+    function printNumbers(num: any) {
+        if (num <= 0) return;
 
-        user.updateEmail("new@email.com")
-        console.log(user.email)
+        printNumbers(Math.floor(num) - 1);
+        console.log(Math.floor(num) - 1);
     }
 
-    const showAnswer = () => setShow(true);
+    console.log(printNumbers(7))
 
     return (
         <div>
             <h1>javascript</h1>
             <h1>This</h1>
-            <p>This контекст в методах объекта задача 2</p>
-            <button onClick={showAnswer}>Показать</button>
+            <p>This контекст в методах объекта задача 1</p>
+            <button onClick={() => {}}>Показать</button>
         </div>
     );
 };

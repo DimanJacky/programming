@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="height: 5001px"></div>
+<script>
+    // Написать функцию throttle для задержки onScroll при скролле
+
+    function throttle() {
+
+    }
+
+    // Функция, которая вызывается при скролле
+    function onScroll() {
+        console.log("Scroll event at", new Date().toLocaleTimeString());
+    }
+
+    // Ограничим обработчик скролла, чтобы он срабатывал не чаще одного раза в 1000 мс
+    const throttledScroll = throttle(onScroll, 1000);
+
+    window.addEventListener("scroll", throttledScroll);
+
+</script>
+</body>
+</html>

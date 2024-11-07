@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" id="search" />
+<script>
+
+    function onChange(e) {
+        console.log(e.target.value);
+    }
+
+    const debounce = (fn, ms) => {
+        let timeout; // текущий таймер
+        return function () {
+            const fnCall = () => {fn.apply(this, arguments)}; // вызов функции fn с контекстом и аргументами
+            clearTimeout(timeout); // сбрасывается предыдущий таймер
+            timeout = setTimeout(fnCall, ms); // создается новый таймер
+        }
+    }
+
+    const onChangeDebounce = debounce(onChange, 500);
+
+    document.getElementById('search').addEventListener('keyup', onChangeDebounce);
+
+</script>
+</body>
+</html>
