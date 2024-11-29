@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Передача параметров в метод</h1>
+
+<div id="app">
+    <h2>{{title}} = {{counter}}</h2>
+    <button v-on:click="riseCounter(5, 'Изменено на 5', $event)">Увеличить на 5</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+
+    // передаем нативный элемент $event
+
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            title: 'Счетчик'
+        },
+        methods: {
+            riseCounter(num, str, event) {
+                this.counter += num;
+                this.title = str;
+
+                event.target.style.color = 'blue';
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

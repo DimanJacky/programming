@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<canvas id="treeCanvas" width="800" height="700" style="border:1px solid #000;"></canvas>
+<script src="utils.js"></script>
+<script>
+    // Есть бинарное дерево BinaryTree, добавлены ноды методом add
+    // Нужно сделать методы обхода дерева
+
+    class Node {
+        constructor(value) {
+            this.value = value;
+            this.left = null;
+            this.right = null;
+        }
+    }
+
+    class BinaryTree {
+        constructor() {
+            this.root = null;
+        }
+
+        add(value) {
+            const newNode = new Node(value);
+            if (!this.root) {
+                this.root = newNode;
+                return;
+            }
+
+            let currentNode = this.root;
+
+            while(currentNode) {
+                if (newNode.value < currentNode.value) {
+                    if (!currentNode.left) {
+                        currentNode.left = newNode;
+                        return;
+                    }
+
+                    currentNode = currentNode.left;
+                } else {
+                    if (!currentNode.right) {
+                        currentNode.right = newNode;
+                        return;
+                    }
+
+                    currentNode = currentNode.right;
+                }
+            }
+        }
+
+        preOrder(node, callback) {
+            if (!node) {
+                return;
+            }
+
+            if (callback) {
+                callback(node);
+            }
+
+            this.preOrder(node.left, callback);
+            this.preOrder(node.right, callback);
+        }
+
+        inOrder(node, callback) {
+            if (!node) {
+                return;
+            }
+
+            this.inOrder(node.left, callback);
+            if (callback) {
+                callback(node);
+            }
+            this.inOrder(node.right, callback);
+        }
+
+        postOrder(node, callback) {
+            if (!node) {
+                return;
+            }
+
+            this.postOrder(node.left, callback);
+            this.postOrder(node.right, callback);
+            if (callback) {
+                callback(node);
+            }
+        }
+
+        traverseDFS(callback, method) {
+            if (method === 'preOrder') {
+                return this.preOrder(this.root, callback);
+            }
+
+            if (method === 'inOrder') {
+                return this.inOrder(this.root, callback);
+            }
+
+            return this.postOrder(this.root, callback);
+        }
+
+        traverseBFS(callback) {
+            const queue = [this.root];
+
+            while(queue.length) {
+                const node = queue.shift();
+                callback(node);
+
+                if (node.left) {
+                    queue.push(node.left);
+                }
+
+                if (node.right) {
+                    queue.push(node.right);
+                }
+            }
+        }
+    }
+
+    const myTree = new BinaryTree();
+
+    myTree.add(4);
+    myTree.add(2);
+    myTree.add(1);
+    myTree.add(3);
+    myTree.add(5);
+
+    // myTree.traverseDFS((node) => {
+    //     console.log(node.value);
+    // }, 'postOrder');
+
+    myTree.traverseBFS((node) => {
+        console.log(node.value);
+    });
+
+    // Начинаем рисовать дерево от корневого узла
+    drawTree(myTree?.root, canvas.width / 2, 40, 0, 1);
+
+    console.log('myTree', myTree);
+
+</script>
+</body>
+</html>

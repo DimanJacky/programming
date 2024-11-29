@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Управление отображением элементов</h1>
+
+<div id="app">
+
+    <h2>A</h2>
+    <h2>B</h2>
+    <h2>C</h2>
+    <h2>not match</h2>
+
+    <hr>
+
+    <input type="text" v-model="type">
+
+    <template>
+        <h2>I am title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, itaque?</p>
+    </template>
+
+    <template>
+        <h2 style="color: red">I am title</h2>
+        <p style="color: blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, itaque?</p>
+    </template>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+
+    // Задание
+    // переменная type связана с input, type будет равно тому, что в input
+    // как прописать условие чтобы в зависимости от input показывался какой-либо h2 A, B, C или not match?
+    // как прописать условие чтобы в зависимости от isVisible показывался или первый если true или другой template?
+
+    new Vue({
+        el: '#app',
+        data: {
+            type: 'a',
+            isVisible: true
+        }
+    });
+
+</script>
+
+</body>
+</html>

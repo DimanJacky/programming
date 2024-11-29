@@ -5,21 +5,45 @@ export const App = () => {
     // Задание:
     // Что выведется в консоли?
 
-    function printNumbers(num: any) {
-        if (num <= 0) return;
+    if (show) {
+        const user = {
+            name: 'Oleg',
+            one: () => {
+                return () => {
+                    console.log(this)
+                }
+            },
+            two: function () {
+                return () => {
+                    console.log(this)
+                }
+            },
+            three: function() {
+                return function() {
+                    console.log(this)
+                }
+            },
+            four: () => {
+                return function () {
+                    console.log(this)
+                }
+            },
+        }
 
-        printNumbers(Math.floor(num) - 1);
-        console.log(Math.floor(num) - 1);
+        user.one()();
+        user.two()();
+        user.three()();
+        user.four()();
     }
 
-    console.log(printNumbers(7))
+    const showAnswer = () => setShow(true);
 
     return (
         <div>
             <h1>javascript</h1>
             <h1>This</h1>
             <p>This контекст в методах объекта задача 1</p>
-            <button onClick={() => {}}>Показать</button>
+            <button onClick={showAnswer}>Показать</button>
         </div>
     );
 };

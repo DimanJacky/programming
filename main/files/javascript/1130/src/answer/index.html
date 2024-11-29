@@ -21,6 +21,10 @@
         }
     }
 
+    // this ссылается на элемент, на котором произошло событие
+    // addEventListener автоматически устанавливает this на элемент, к которому привязан обработчик события
+    // Но здесь можно передать this любой, функция onChange только использует только переданные аргументы
+
     const onChangeDebounce = debounce(onChange, 500);
 
     document.getElementById('search').addEventListener('keyup', onChangeDebounce);

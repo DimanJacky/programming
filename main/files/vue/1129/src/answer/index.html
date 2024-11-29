@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Работа со списками</h1>
+
+<div id="app">
+    <ul>
+        <li v-for="(person, index) of people">{{index + 1}} {{person.name}} - <b>{{person.age}}</b></li>
+    </ul>
+
+    <hr>
+
+    <ol>
+        <li v-for="num of 4">{{num}}</li>
+    </ol>
+
+    <hr>
+
+    <ul>
+        <li v-for="(value, key, index) in person"><em>{{index + 1}}</em> <b>{{key}}</b> {{value}}</li>
+    </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            people: [
+                {name: 'John', age: 20},
+                {name: 'Max', age: 25},
+                {name: 'Elena', age: 30},
+            ],
+            person: {
+                name: 'Max',
+                age: 50,
+                job: 'programmer'
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

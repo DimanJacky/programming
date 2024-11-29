@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Интерполяция</h1>
+
+<div id="app">
+    <h1>String {{name}}</h1>
+    <h1>Sum: </h1>
+    <h1>Method: </h1>
+    <h1>If statement: </h1>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+
+    // Задание:
+    // С помощью интерполяции создать переменную name Vue! и вывести в строке string
+    // Вывести сумму 10 и 60
+    // Создать метод sayHello и вернуть hello, вывести в строке
+    // Использовать тернарный оператор в зависимости от переменной isOk вывести OK или no
+
+    new Vue({
+        el: '#app',
+        data: {
+            name: 'Vue!'
+        }
+    });
+
+</script>
+
+</body>
+</html>

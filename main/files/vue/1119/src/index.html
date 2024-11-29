@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Добавление событий</h1>
+
+<div id="app">
+    <h2>Счетчик = {{counter}}</h2>
+    <button>Увеличить</button>
+
+    <hr>
+
+    <h2>Счетчик 2 = {{counter2}}</h2>
+    <button>Увеличить</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+
+    // Задание:
+    // Сделать чтобы counter увеличивался по нажатию на кнопку, используя метод riseCounter
+    // Сделать чтобы counter2 увеличивался по нажатию на кнопку, используя js внутри button
+    // Сделать чтобы при наведении на Счетчик 2 изменялся его цвет на green, создать метод onHover
+
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            counter2: 0
+        },
+        methods: {
+            riseCounter() {
+
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

@@ -9,26 +9,30 @@
 <script>
 
     function throttle(func, ms) {
-        let isThrottled = false;
-        let savedArgs;
-        let savedThis;
+        let isThrottled = false; // игнорируются запросы или нет
+        let savedArgs; // аргументы, с которыми была вызвана предыдущая функция
+        let savedThis; // текущий контекст
 
         function wrapper() {
-
+            // Если запросы игнорируются, то выход из функции
             if (isThrottled) {
-                savedArgs = arguments;
-                savedThis = this;
+                savedArgs = arguments; // нужно запомнить аргументы, чтобы далее вызвать функцию с этими аргументами
+                savedThis = this; // и также контекстом
                 return;
             }
 
             func.apply(this, arguments);
 
-            isThrottled = true;
+            isThrottled = true; // следующие запросы игнорируются
 
             setTimeout(function() {
-                isThrottled = false;
+                isThrottled = false; // через заданное время isThrottled очищается
+                // если существуют сохраненные аргументы
                 if (savedArgs) {
-                    wrapper.apply(savedArgs, savedArgs);
+                    // то нужно еще раз вызвать функцию func
+                    // передаем в wrapper this и аргументы
+                    wrapper.apply(savedThis, savedArgs);
+                    // и нужно их очистить
                     savedArgs = savedThis = null;
                 }
             }, ms);

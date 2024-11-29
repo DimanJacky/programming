@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Оптимизация приложения с computed</h1>
+
+<div id="app">
+
+    <h2>Counter {{counter}}, Counter 2 {{counter2}}</h2>
+    <h3>Result: {{result()}}</h3>
+
+    <button @click="add">Add</button>
+    <button @click="sub">Sub</button>
+    <button @click="counter2++">Add counter 2</button>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    // Задание
+    // если нажимать Add и Sub то будет вызываться result, так как result зависит от counter
+    // но если нажимать Add counter 2, result тоже будет вызываться
+    // как сделать, чтобы result не вызывался если нажимать на Add counter 2?
+
+    new Vue({
+        el: '#app',
+        data: {
+            counter: 0,
+            counter2: 0
+        },
+        methods: {
+            add() {
+                this.counter++;
+            },
+            sub() {
+                this.counter--;
+            },
+            result() {
+                console.log('result');
+                return this.counter > 3 ? 'More than 3' : 'Less than 3';
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
