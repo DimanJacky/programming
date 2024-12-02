@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Жизненный цикл</h1>
+
+<div id="app">
+    <h2>{{title}}</h2>
+
+    <button @click="title = 'Changed title'">Change</button>
+    <button @click="doDestroy">Destroy</button>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    // Задание
+    // Написать все методы жизненного цикла и вывести названия в console.log
+    // Написать метод doDestroy, который удаляет компонент
+
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello I am Vue!'
+        },
+        methods: {
+            doDestroy() {
+
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

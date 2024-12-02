@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Доступ к DOM элементам</h1>
+
+<div id="app">
+    <h2>{{title}}</h2>
+    <button @click="updateFirstTitle">Update title</button>
+
+    <hr>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+    // Задание
+    // сделать ссылку на элемент h2 назвать heading
+    // сделать ссылку на элемент hr назвать horline
+
+    //сделать чтобы при нажатии на кнопку цвет heading стал red
+    // вывести в консоль все ссылки на элементы и с помощью js вывести ссылку на hr
+
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello I am Vue!'
+        },
+        methods: {
+            updateFirstTitle() {
+
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>

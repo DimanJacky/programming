@@ -9,28 +9,23 @@
 </head>
 <body>
 <h1>Основы vue</h1>
-<h1>Интерполяция</h1>
+<h1>Свойство template</h1>
 
 <div id="app">
-    <h1>String {{ name }}</h1>
-    <h1>Sum: {{ 10 + 60 }}</h1>
-    <h1>Method: {{ sayHello() }}</h1>
-    <h1>If statement: {{ isOk ? 'OK' : 'no' }}</h1>
+    <h1>{{title}}</h1>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
 <script>
+    // Задание
+    // по другому определить #app не через el
+    // по другому заполнить <div id="app></div>
+    // после h1 добавить p
 
     new Vue({
         el: '#app',
         data: {
-            name: 'Vue!',
-            isOk: true,
-        },
-        methods: {
-            sayHello() {
-                return 'hello'
-            }
+            title: 'Hello I am Vue!'
         }
     });
 

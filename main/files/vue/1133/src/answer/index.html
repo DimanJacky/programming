@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<h1>Основы vue</h1>
+<h1>Доступ к DOM элементам</h1>
+
+<div id="app">
+    <h2 ref="heading">{{title}}</h2>
+    <button @click="updateFirstTitle">Update title</button>
+
+    <hr ref="horline">
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<script>
+
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Hello I am Vue!'
+        },
+        methods: {
+            updateFirstTitle() {
+                this.title = 'New title!';
+                this.$refs.heading.style.color = 'red';
+                console.log(this.$refs);
+                console.log(document.querySelector('hr'))
+            }
+        }
+    });
+
+</script>
+
+</body>
+</html>
