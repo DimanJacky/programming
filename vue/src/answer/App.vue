@@ -1,46 +1,26 @@
 <template>
-  <div>
-    <h1>Parent: {{carName}}</h1>
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="collapse navbar-collapse">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link class="nav-link" to="/">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :to="'/cars'">Cars</router-link>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-    <app-counter :counter="counter"></app-counter>
-
-    <app-car
-      :carName="carName"
-      :carYear="carYear"
-      :counter="counter"
-      :changeFunc="changeNameToAudi"
-      @nameChanged="carName = $event"
-      @counterUpdated="counter = $event"
-    >
-    </app-car>
+    <router-view></router-view>
   </div>
-
 </template>
 
 <script>
-import Car from "./Car.vue";
-import Counter from "./Counter.vue";
-
 export default {
-  data () {
-    return {
-      carName: 'Ford',
-      carYear: 2018,
-      counter: 0
-    }
-  },
-  methods: {
-    changeNameToAudi() {
-      this.carName = 'Audi';
-    }
-  },
-  components: {
-    appCar: Car,
-    appCounter: Counter
+  data() {
+    return {}
   }
 }
 </script>
-
-<style>
-
-</style>

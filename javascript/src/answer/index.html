@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const str = 'абв бА';
+
+    // это просто функция со строкой
+    function testPalindromeWithReverse(str) {
+        // удаляем все символы, которые не буквы и не строки и приводим строку в нижний регистр
+        const cleanStr = str.toLowerCase().replace(/[^а-я0-9]/g, '');
+
+        return cleanStr === cleanStr.split('').reverse().join('');
+    }
+
+    function isEquals(str1, str2) {
+        return str1.toLowerCase() === str2.toLowerCase();
+    }
+
+    function isLetter(char) {
+        return char.toLowerCase() !== char.toUpperCase();
+    }
+
+    // создаем 2 указателя которые движутся навстречу друг другу
+    // Этот алгоритм эффективен, так как не требует дополнительной памяти для перевёрнутой строки
+
+    function testPalindromeWithPointers(str) {
+        let start = 0;
+        let end = str.length - 1;
+
+        while (start < end) {
+            const firstChar = str[start];
+            const endChar = str[end];
+
+            if (!isLetter(firstChar)) {
+                start += 1;
+                continue;
+            }
+
+            if (!isLetter(endChar)) {
+                end -= 1;
+                continue;
+            }
+
+            if (!isEquals(firstChar, endChar)) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+        return true;
+    }
+
+    console.log(testPalindromeWithReverse(str));
+    // console.log(testPalindromeWithPointers(str));
+
+</script>
+</body>
+</html>

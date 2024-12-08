@@ -1,10 +1,10 @@
 <template>
-<h1>Counter: {{counter}}</h1>
+  <h1>Cars page</h1>
 </template>
 
 <script>
 export default {
-  props: ['counter']
+
 }
 </script>
 
