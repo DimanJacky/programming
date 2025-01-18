@@ -43,6 +43,14 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
         },
     };
 
+    const cssLoader = {
+        test: /\.css$/i,
+        use: [
+            isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+            'css-loader',
+        ],
+    };
+
     const scssLoader = {
         test: /\.s[ac]ss$/i,
         use: [
@@ -80,6 +88,7 @@ export function buildLoaders(options: BuildOptions): ModuleOptions['rules'] {
     const babelLoader = buildBabelLoader(options);
 
     return [
+        cssLoader,
         scssLoader,
         // tsLoader,
         assetLoader,
