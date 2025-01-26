@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Задание:
+    /*
+Необходимо преобразовать массив в структуру,
+где данные будут сгруппированы по одному из полей(кроме id),
+внутри сформированной группы должен лежать объект(или Map),
+ключами в котором должно быть поле id,
+а значением объект из исходного массива с соответствующим полем id,
+не включая само поле id.
+Можно создать функцию, в которую передавать массив и поле по которому группируется массив
+*/
+
+    const data = [
+        {id: 1, age: 20, name: "Иван", country: "Russia", registred: true},
+        {id: 2, age: 30, name: "Дима", country: "USA", registred: true},
+        {id: 3, age: 25, name: "Леха", country: "Russia", registred: false},
+        {id: 4, age: 20, name: "Леха", country: "USA", registred: false},
+        {id: 5, age: 30, name: "Иван", country: "Russia", registred: true},
+        {id: 6, age: 50, name: "Леха", country: "Russia", registred: true},
+        {id: 7, age: 20, name: "Дима", country: "USA", registred: false},
+    ]
+
+    const func = (array, groupField) => {
+
+    };
+
+    console.log(func(data, 'age'));
+
+</script>
+</body>
+</html>

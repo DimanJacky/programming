@@ -109,7 +109,9 @@ function App() {
         response = await fetch('http://localhost:5001/api/v1/edit', options);
     }
 
-    const chooseLesson = (name) => {
+    const chooseLesson = (e, name) => {
+        document.querySelectorAll('.lesson').forEach(el => el.style.background = '#ffffff');
+        e.target.style.background = '#eeeeee';
         document.querySelector('#lesson').value = name;
         setChoiseDisable(false);
     }
@@ -146,45 +148,49 @@ function App() {
 
   return (
     <div>
-        <h1>Auth Page</h1>
-        <label>Раздел</label><br />
-        <select name="chapter" id="chapter" onChange={selectHandler}>
-            <option key={0} value="Выберите раздел">Выберите раздел</option>
-            {
-                chapterArray?.length > 0 && chapterArray.map((lesson, i) => (<option value={lesson.name} key={lesson.id}>{lesson.name}</option>))
-            }
-        </select><br />
-        <input type="text" name="lesson" id="lesson" /><br />
+        <div style={{position: "fixed", top: 0, background: '#ffffff', width: '100%'}}>
+            <h1>Auth Page</h1>
+            <label>Раздел</label><br />
+            <select name="chapter" id="chapter" onChange={selectHandler}>
+                <option key={0} value="Выберите раздел">Выберите раздел</option>
+                {
+                    chapterArray?.length > 0 && chapterArray.map((lesson, i) => (<option value={lesson.name} key={lesson.id}>{lesson.name}</option>))
+                }
+            </select><br />
+            <input type="text" name="lesson" id="lesson" /><br />
 
-        <button disabled={choiseDisable} onClick={choiceHandler}>Выбрать</button>
+            <button disabled={choiseDisable} onClick={choiceHandler}>Выбрать</button>
 
-        <div>
-            <label>Создать новый</label><br />
-            тема <input type="text" name="theme" id="theme" value={themeText} onInput={onChangeThemeText}/><br />
-            название <input type="text" name="newlesson" id="newlesson" value={newlessonText}
-                            onInput={onChangeNewlessonText}/><br />
-            <button disabled={!newlessonText || !themeText} onClick={createHundler}>Создать</button><br />
-            <button disabled={choiseDisable} onClick={editHundler}>Редактировать</button>
+            <div>
+                <label>Создать новый</label><br />
+                тема <input type="text" name="theme" id="theme" value={themeText} onInput={onChangeThemeText}/><br />
+                название <input type="text" name="newlesson" id="newlesson" value={newlessonText}
+                                onInput={onChangeNewlessonText}/><br />
+                <button disabled={!newlessonText || !themeText} onClick={createHundler}>Создать</button><br />
+                <button disabled={choiseDisable} onClick={editHundler}>Редактировать</button>
+            </div>
         </div>
-        {
-            groupedLessons.length > 0 && groupedLessons?.map((lessons, i) => {
-                return (
-                    <div key={i}>
-                        <h3>
-                            {lessons.theme}
-                        </h3>
-                        {
-                            lessons.data.map(item => {
-                                return (<div className="lesson" key={item.id} onClick={() => chooseLesson(item.folderName)}>
-                                    {item.name}
-                                </div>)
-                            })
-                        }
+        <div style={{marginTop: '300px'}}>
+            {
+                groupedLessons.length > 0 && groupedLessons?.map((lessons, i) => {
+                    return (
+                        <div key={i}>
+                            <h3>
+                                {lessons.theme}
+                            </h3>
+                            {
+                                lessons.data.map(item => {
+                                    return (<div className="lesson" key={item.id} onClick={(e) => chooseLesson(e, item.folderName)}>
+                                        {item.name}
+                                    </div>)
+                                })
+                            }
 
-                    </div>
-                )
-            })
-        }
+                        </div>
+                    )
+                })
+            }
+        </div>
     </div>
   );
 }

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const str = '{()}';
+
+    function isValidBrackets(str) {
+        // Создаем пустой стек
+        const stack = [];
+        // Карта для сопоставления открывающих и закрывающих скобок
+        const template = {
+            ')': '(',
+            '}': '{',
+            ']': '['
+        };
+
+        // Проходим по каждому символу строки
+        for (const char of str) {
+            if (['(', '[', '{'].includes(char)) {
+                // Если символ — открывающая скобка, добавляем в стек
+                stack.push(char);
+            } else if (char in template) {
+                // Если символ — закрывающая скобка
+                if (stack.length === 0 || stack.pop() !== template[char]) {
+                    // Если стек пуст или верхний элемент не соответствует, последовательность некорректна
+                    return false;
+                }
+            }
+        }
+
+        // Если стек пуст после обработки всех символов, последовательность корректна
+        return stack.length === 0;
+    }
+
+    console.log(isValidBrackets(str));
+
+</script>
+</body>
+</html>

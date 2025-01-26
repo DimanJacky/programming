@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    const tags = ["javascript", "php", "javascript", "sql", "java", "python", "sql"];
+
+    function func(tags) {
+        const obj = tags.reduce((acc, cur) => {
+            acc[cur] = (acc[cur] || 0) + 1; // если еще нет acc[cur] то 1, если есть то к нему прибавляем 1
+            return acc;
+        }, {});
+        return Object.entries(obj).map(item => `${item[0]}: ${item[1]}`).join(', ');
+    }
+
+    console.log(func(tags));
+
+</script>
+</body>
+</html>

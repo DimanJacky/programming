@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    border: 10px solid brown;
+    height: 300px;
+}
+
+.box {
+    width: 150px;
+    height: 150px;
+    font-size: 8em;
+    text-align: center;
+    border-radius: 15px;
+}
+
+/*
+Считаем какие flex-grow нужны для растягивания
+контейнер 900px, 4 элемента по 150px, свободное пространство 300px
+1 элемент занимает кроме своего размера 200px - 150px = 50px,
+2 элемент занимает кроме своего размера 250px - 150px = 100px,
+3 элемент занимает кроме своего размера 300px - 150px = 150px,
+минимальное это 1 часть 1 элемент, 2 элемент 2 части, 3 элемент 3 части.
+
+Считаем какие flex-shrink нужны для сжатия
+контейнер 540px, 4 элемента по 150px, сжатое пространство 60px
+1 элемент сжимается на 150px - 130px = 20px
+2 элемент сжимается на 150px - 110px = 40px
+минимальное это 1 часть 1 элемент, 2 элемент 2 части
+*/
+
+#box1 {
+    background-color: hsl(0, 100%, 70%);
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+#box2 {
+    background-color: hsl(52, 100%, 70%);
+    flex-grow: 2;
+    flex-shrink: 2;
+}
+
+#box3 {
+    background-color: hsl(111, 100%, 70%);
+    flex-grow: 3;
+    flex-shrink: 0;
+}
+
+#box4 {
+    background-color: hsl(201, 100%, 70%);
+    flex-shrink: 0;
+}

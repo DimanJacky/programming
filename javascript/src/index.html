@@ -6,46 +6,36 @@
 </head>
 <body>
 <script>
-    // Задание:
-    // распределить людей по группам городов
+    // Нужно написать функцию является ли строка палиндромом, т.е. со всех сторон одинаковая
+    // Можно написать простую функцию и оптимизированную
+    // Нужно учитывать что могут быть пробелы, специальные символы и большие и маленькие буквы
+    const str = 'а в б в Бва ';
 
-    // Данные на выход
-    /*
-    {
-      'Moscow': [ 'Alex', 'Ivan' ],
-      'New York': 'Joe',
-      'Berlin': 'Johan'
+    function testPalindrome(str) {
+        let left = 0;
+        let right = str.length - 1;
+        str = str.toLowerCase();
+
+        while (left <= right) {
+            if (str[left].toUpperCase() === str[left].toLowerCase()) {
+                left += 1;
+            }
+
+            if (str[right].toUpperCase() === str[right].toLowerCase()) {
+                right -= 1;
+            }
+
+            if (str[left] !== str[right]) {
+                return false;
+            }
+
+            left += 1;
+            right -= 1;
+        }
+        return true;
     }
-    */
 
-    const people = [
-        {
-            name: 'Alex',
-            city: 'Moscow',
-        },
-        {
-            name: 'Alex2',
-            city: 'Moscow',
-        },
-        {
-            name: 'Ivan',
-            city: 'Moscow',
-        },
-        {
-            name: 'Joe',
-            city: 'New York'
-        },
-        {
-            name: 'Johan',
-            city: 'Berlin'
-        },
-    ];
-
-    const func = (array) => {
-
-    };
-
-    console.log(func(people));
+    console.log(testPalindrome(str));
 
 </script>
 </body>

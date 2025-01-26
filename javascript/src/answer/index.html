@@ -6,43 +6,58 @@
 </head>
 <body>
 <script>
-    const people = [
-        {
-            name: 'Alex',
-            city: 'Moscow',
-        },
-        {
-            name: 'Alex2',
-            city: 'Moscow',
-        },
-        {
-            name: 'Ivan',
-            city: 'Moscow',
-        },
-        {
-            name: 'Joe',
-            city: 'New York'
-        },
-        {
-            name: 'Johan',
-            city: 'Berlin'
-        },
-    ];
+    const str = 'абв бА';
 
-    const func = (array) => {
-        return array.reduce((acc, {city, name}) => {
-            if (!acc[city]) { // если в объекте нет такого свойства, то добавляем его
-                acc[city] = name;
-            } else if (!Array.isArray(acc[city])) { // если свойство строка, создаем массив и добавляем которое было и текущее свойство
-                acc[city] = [acc[city], name];
-            } else { // если свойство массив, то добавляем еще свойство в массив
-                acc[city].push(name);
+    // это просто функция со строкой
+    function testPalindromeWithReverse(str) {
+        // удаляем все символы, которые не буквы и не строки и приводим строку в нижний регистр
+        const cleanStr = str.toLowerCase().replace(/[^а-я0-9]/g, '');
+
+        return cleanStr === cleanStr.split('').reverse().join('');
+    }
+
+    function isEquals(str1, str2) {
+        return str1.toLowerCase() === str2.toLowerCase();
+    }
+
+    function isLetter(char) {
+        return char.toLowerCase() !== char.toUpperCase();
+    }
+
+    // создаем 2 указателя которые движутся навстречу друг другу
+    // Этот алгоритм эффективен, так как не требует дополнительной памяти для перевёрнутой строки
+
+    function testPalindromeWithPointers(str) {
+        let start = 0;
+        let end = str.length - 1;
+
+        while (start < end) {
+            const firstChar = str[start];
+            const endChar = str[end];
+
+            if (!isLetter(firstChar)) {
+                start += 1;
+                continue;
             }
-            return acc;
-        }, {});
-    };
 
-    console.log(func(people));
+            if (!isLetter(endChar)) {
+                end -= 1;
+                continue;
+            }
+
+            if (!isEquals(firstChar, endChar)) {
+                return false;
+            }
+
+            start++;
+            end--;
+        }
+        return true;
+    }
+
+    console.log(testPalindromeWithReverse(str));
+    // console.log(testPalindromeWithPointers(str));
+
 </script>
 </body>
 </html>

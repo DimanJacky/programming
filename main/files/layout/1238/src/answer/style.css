@@ -1,0 +1,52 @@
+.container {
+    display: flex;
+    border: 10px solid brown;
+    height: 300px;
+    column-gap: 1em;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    font-size: 5em;
+    text-align: center;
+    border-radius: 10px;
+}
+
+#box1 {
+    background-color: hsl(0, 100%, 70%);
+    align-self: start;
+    order: 1;
+}
+
+#box2 {
+    background-color: hsl(52, 100%, 70%);
+    align-self: center;
+    order: -1;
+}
+
+#box3 {
+    background-color: hsl(111, 100%, 70%);
+    align-self: end;
+    order: -2;
+}
+
+#box4 {
+    background-color: hsl(201, 100%, 70%);
+}
+
+#box5 {
+    background-color: hsl(0, 100%, 70%);
+}
+
+#box6 {
+    background-color: hsl(52, 100%, 70%);
+}
+
+#box7 {
+    background-color: hsl(111, 100%, 70%);
+}
+
+#box8 {
+    background-color: hsl(201, 100%, 70%);
+}
