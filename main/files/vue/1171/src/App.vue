@@ -3,7 +3,7 @@
     <h1>Роутинг с vue-router</h1>
     <h1>Программная навигация</h1>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="collapse navbar-collapse">
+      <div class="navbar-collapse">
         <ul class="navbar-nav">
           <router-link tag="li" class="nav-item" exact to="/" active-class="active">
             <a class="nav-link">Home</a>

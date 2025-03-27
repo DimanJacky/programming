@@ -15,10 +15,10 @@
 
 <script>
 export default {
-  props: ['value'],
+  props: ['value'], // если мы используем v-model с компонентом, то передается value
   methods: {
     onChange(newValue) {
-      this.$emit('input', newValue)
+      this.$emit('input', newValue) // событие, которое прослушивается v-model
     }
   }
 }

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // Создаем Set, чтобы быстро проверять, есть ли нужное число для пары
+    // Итерируем массив, вычисляем needed = targetSum - num, проверяем Set
+    // Если найдено — возвращаем [needed, num]
+
+    function findPairWithSum(nums, targetSum) {
+        const seen = new Set();
+
+        for (const num of nums) {
+            const needed = targetSum - num;
+            if (seen.has(needed)) {
+                return [needed, num];
+            }
+            seen.add(num);
+        }
+
+        return [];
+    }
+
+    const nums = [1, 2, 3, 4, 5, -1, 11];
+    const targetSum = 10;
+
+    const result = findPairWithSum(nums, targetSum);
+    console.log(result); // [-1, 11] || [11, -1]
+
+</script>
+</body>
+</html>

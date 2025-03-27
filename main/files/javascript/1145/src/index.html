@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Задание
+    // есть объект компания, в компании есть отделы
+    // отдел может состоять из массива работников или отдел может быть разделён на подотделы,
+    // например, отдел development состоит из подотделов
+    // требуется подсчитать сумму всех зарплат
+
+    let company = {
+        sales: [{name: 'John', salary: 1000}, {name: 'Alice', salary: 600 }],
+        development: {
+            sites: [{name: 'Peter', salary: 2000}, {name: 'Alex', salary: 1800 }],
+            internals: [{name: 'Jack', salary: 1300}]
+        }
+    };
+
+    function sumSalaries(department) {
+
+    }
+
+    console.log(sumSalaries(company));
+
+</script>
+</body>
+</html>

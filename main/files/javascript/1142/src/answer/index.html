@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function strCount(str, substring) {
+        let count = 0;
+        let pos = -1; // Начинаем с -1, чтобы сразу искать с 0
+
+        while ((pos = str.indexOf(substring, pos + 1)) !== -1) {
+            count++;
+        }
+
+        return count;
+    }
+
+    function strCount1(str, substring) {
+        const regex = new RegExp(substring, 'g'); // Флаг 'g' для поиска всех совпадений
+        return (str.match(regex) || []).length;
+    }
+
+    console.log(strCount('abababab', 'ab')); // 4
+    console.log(strCount('', 'z')); // 0
+    console.log(strCount('Alexandr', 'a')); // 1
+    console.log(strCount('Anna', 'n')); // 2
+
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    // Задание
+    // У вас есть переменная message, которая содержит входные пользовательские данные.
+    // Напишите код для встречающихся в строке message пар рядом расположенных символов указывает, сколько раз встречается в строке message каждое из таких двухбуквенных сочетаний.
+    // Учитывайте то что ваш код должен работать как с кириллицей так и с латиницей.
+    // Учитывайте регистр. A != a
+
+    function countCharacterPairs(message) {
+
+    }
+
+    const message1 = 'ab';
+    const result1 = countCharacterPairs(message1);
+    console.log(result1); // ab: 1
+
+    const message2 = 'abab';
+    const result2 = countCharacterPairs(message2);
+    console.log(result2); // ab: 2, ba: 1
+
+    const message3 = 'abcd';
+    const result3 = countCharacterPairs(message3);
+    console.log(result3); // ab: 1, bc: 1, cd: 1
+
+</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // для того чтобы убрать дубли используем 2 Set
+
+    const intersect = (a, b) => {
+        const set1 = new Set(a);
+        const set2 = new Set(b);
+
+        return [...set1].filter(item => set2.has(item));
+    }
+
+    console.log(intersect([1, 1, 3, 4, 5, 6, 2, 3], [1, 2, 4])); // [1, 4, 2]
+
+</script>
+</body>
+</html>

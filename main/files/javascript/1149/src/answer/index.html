@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function romanToInt(roman) {
+        const romanMap = {
+            I: 1, V: 5, X: 10, L: 50, C: 100, D: 500, M: 1000
+        };
+
+        let sum = 0;
+
+        for (let i = 0; i < roman.length; i++) {
+            const current = romanMap[roman[i]];
+            const next = romanMap[roman[i + 1]];
+
+            if (next > current) {
+                sum -= current; // Вычитаем, если следующее число больше
+            } else {
+                sum += current; // Обычное сложение
+            }
+        }
+
+        return sum;
+    }
+
+
+
+    console.log(romanToInt('IX')); // 9
+    console.log(romanToInt('XII')); // 12
+    console.log(romanToInt('XLII')); // 42
+    console.log(romanToInt('MMXXV')); //2025
+
+</script>
+</body>
+</html>

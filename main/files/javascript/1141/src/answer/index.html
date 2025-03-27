@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function strCount(str, letter) {
+        // Разделяем строку на массив, используя символ как разделитель,
+        // длина массива минус один даст количество вхождений символа.
+        return str.split(letter).length - 1;
+    }
+
+    console.log(strCount('Hello', 'o')); // 1
+    console.log(strCount('Hello', 'l')); // 2
+    console.log(strCount('', 'z')); // 0
+    console.log(strCount('Alexandr', 'a')); // 1
+    console.log(strCount('Anna', 'n')); // 2
+
+</script>
+</body>
+</html>

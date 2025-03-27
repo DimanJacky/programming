@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    function countNestedArrays(data) {
+        let count = 0;
+
+        function countArrays(arr) {
+            for (let item of arr) {
+                if (Array.isArray(item)) {
+                    count++;
+                    countArrays(item);
+                }
+            }
+        }
+        countArrays(data);
+        return count;
+    }
+
+    const data1 = [1, [2, 3], 3, [4, [5]]];
+    const result1 = countNestedArrays(data1);
+    console.log(result1); // 3
+
+    const data2 = [1, 2, 3];
+    const result2 = countNestedArrays(data2);
+    console.log(result2); // 0
+
+</script>
+</body>
+</html>

@@ -6,36 +6,20 @@
 </head>
 <body>
 <script>
-    // Нужно написать функцию является ли строка палиндромом, т.е. со всех сторон одинаковая
-    // Можно написать простую функцию и оптимизированную
-    // Нужно учитывать что могут быть пробелы, специальные символы и большие и маленькие буквы
-    const str = 'а в б в Бва ';
 
-    function testPalindrome(str) {
-        let left = 0;
-        let right = str.length - 1;
-        str = str.toLowerCase();
+    function persistence(num, count = 0) {
+        let numStr = String(num);
 
-        while (left <= right) {
-            if (str[left].toUpperCase() === str[left].toLowerCase()) {
-                left += 1;
-            }
-
-            if (str[right].toUpperCase() === str[right].toLowerCase()) {
-                right -= 1;
-            }
-
-            if (str[left] !== str[right]) {
-                return false;
-            }
-
-            left += 1;
-            right -= 1;
+        if (numStr.length === 1) {
+            return count;
         }
-        return true;
+
+        const nextNum = numStr.split('').reduce((acc, cur) => acc * cur, 1);
+
+        return persistence(nextNum, count + 1);
     }
 
-    console.log(testPalindrome(str));
+    console.log(persistence(39));
 
 </script>
 </body>
