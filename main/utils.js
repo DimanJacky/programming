@@ -90,7 +90,8 @@ function deleteDirectory(dir) {
 };
 
     async function readDirectory() {
-        const folderPath = 'C:\\project\\programming\\main\\files\\';
+        // const folderPath = 'C:\\project\\programming\\main\\files\\';
+        const folderPath = '/home/dmitrii/project/programming/main/files/';
         const directoryData = [];
         try {
             const folders = await fsPromise.readdir(folderPath);

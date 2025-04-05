@@ -19,7 +19,8 @@ class ProductController {
         const theme = req.body.theme;
         const newlesson = req.body.newlesson;
         try {
-            const folderPath = 'C:\\project\\programming\\main\\files\\' + chapter + '\\';
+            // const folderPath = 'C:\\project\\programming\\main\\files\\' + chapter + '\\';
+            const folderPath = '/home/dmitrii/project/programming/main/files/' + chapter + '/';
 
             const folders = await fsPromise.readdir(folderPath);
             const arrFolder = [];
@@ -47,8 +48,10 @@ class ProductController {
                 }
 
                 if (chapter) {
-                    if (!fs.existsSync(newfolder + '\\' + 'src')) {
-                        fs.mkdirSync(newfolder + '\\' + 'src');
+                    // if (!fs.existsSync(newfolder + '\\' + 'src')) {
+                    if (!fs.existsSync(newfolder + '/' + 'src')) {
+                        // fs.mkdirSync(newfolder + '\\' + 'src');
+                        fs.mkdirSync(newfolder + '/' + 'src');
                         console.log('Папка создана успешно.');
                     } else {
                         console.log('Папка уже существует.');
@@ -65,7 +68,8 @@ class ProductController {
                     }
                 });
 
-                const srcDir = `C:\\project\\programming\\${chapter}\\src`;
+                // const srcDir = `C:\\project\\programming\\${chapter}\\src`;
+                const srcDir = `/home/dmitrii/project/programming/${chapter}/src`;
 
                 (async function main() {
                     await utils.copyFolderRecursiveSync(srcDir, newfolder);
@@ -83,14 +87,17 @@ class ProductController {
         const newlesson = req.body.newlesson;
         const folderLesson = req.body.folderLesson;
         try {
-            const folderPath = 'C:\\project\\programming\\main\\files\\' + chapter + '\\';
+            // const folderPath = 'C:\\project\\programming\\main\\files\\' + chapter + '\\';
+            const folderPath = '/home/dmitrii/project/programming/main/files/' + chapter + '/';
 
             const newfolder = folderPath + folderLesson;
 
             if (theme && newlesson) {
                 if (chapter) {
-                    if (!fs.existsSync(newfolder + '\\' + 'src')) {
-                        fs.mkdirSync(newfolder + '\\' + 'src');
+                    // if (!fs.existsSync(newfolder + '\\' + 'src')) {
+                    if (!fs.existsSync(newfolder + '/' + 'src')) {
+                        // fs.mkdirSync(newfolder + '\\' + 'src');
+                        fs.mkdirSync(newfolder + '/' + 'src');
                         console.log('Папка создана успешно.');
                     } else {
                         console.log('Папка уже существует.');
@@ -107,7 +114,8 @@ class ProductController {
                     }
                 });
 
-                const srcDir = `C:\\project\\programming\\${chapter}\\src`;
+                // const srcDir = `C:\\project\\programming\\${chapter}\\src`;
+                const srcDir = `/home/dmitrii/project/programming/${chapter}/src`;
 
                 (async function main() {
                     await utils.copyFolderRecursiveSync(srcDir, newfolder);
@@ -125,20 +133,25 @@ class ProductController {
             const chapter = req.body.chapter; // Название раздела
             const lesson = req.body.lesson; // Название темы
 
-            const folderFiles = 'C:\\project\\programming\\main\\files\\';
+            // const folderFiles = 'C:\\project\\programming\\main\\files\\';
+            const folderFiles = '/home/dmitrii/project/programming/main/files/';
 
-            const folderLesson = folderFiles + `${chapter}\\`;
+            // const folderLesson = folderFiles + `${chapter}\\`;
+            const folderLesson = folderFiles + `${chapter}/`;
 
             // Копирование файла
 
             // Из этой папки копируются файлы
-            const srcDir = folderLesson + `${lesson}\\src`;
+            // const srcDir = folderLesson + `${lesson}\\src`;
+            const srcDir = folderLesson + `${lesson}/src`;
 
             // Файлы копируются в эту папку
-            const destDir = `C:\\project\\programming\\${chapter}`;
+            // const destDir = `C:\\project\\programming\\${chapter}`;
+            const destDir = `/home/dmitrii/project/programming/${chapter}`;
 
             // Папка src удаляется и заменяется другой
-            const destDir1 = `C:\\project\\programming\\${chapter}\\src`;
+            // const destDir1 = `C:\\project\\programming\\${chapter}\\src`;
+            const destDir1 = `/home/dmitrii/project/programming/${chapter}/src`;
 
             // Вызываем поочередно функции
             // Сначала нужно удалить папку src
